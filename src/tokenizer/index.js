@@ -115,7 +115,6 @@ var TypeaheadTokenizer = React.createClass({
     var classList = React.addons.classSet(classes);
     return (
       <div>
-        { this._renderTokens() }
         <Typeahead ref="typeahead"
           className={classList}
           placeholder={this.props.placeholder}
@@ -124,6 +123,7 @@ var TypeaheadTokenizer = React.createClass({
           defaultValue={this.props.defaultValue}
           onOptionSelected={this._addTokenForValue}
           onKeyDown={this._onKeyDown} />
+        { this._renderTokens() }
       </div>
     )
   }
