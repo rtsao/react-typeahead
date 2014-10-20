@@ -50,6 +50,14 @@ var Typeahead = React.createClass({
       selection: null
     };
   },
+  
+  componentWillReceiveProps: function(nextProps) {
+    this.setState({
+      options: nextProps.options,
+      entryValue: nextProps.defaultValue,
+      visible: this.getOptionsForValue(nextProps.defaultValue, nextProps.options)
+    });
+  },
 
   getOptionsForValue: function(value, options) {
     var result = fuzzy.filter(value, options).map(function(res) {
