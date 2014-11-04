@@ -1,8 +1,4 @@
-/**
- * @jsx React.DOM
- */
-
-var React = window.React || require('react/addons');
+var React = require('react/addons');
 var TypeaheadOption = require('./option');
 
 /**
@@ -68,7 +64,6 @@ var TypeaheadSelector = React.createClass({
 
   _onClick: function(result) {
     this.props.onOptionSelected(result);
-    return false;
   },
 
   _nav: function(delta) {

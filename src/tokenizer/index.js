@@ -1,8 +1,4 @@
-/**
- * @jsx React.DOM
- */
-
-var React = window.React || require('react');
+var React = require('react');
 var Token = require('./token');
 var KeyEvent = require('../keyevent');
 var Typeahead = require('../typeahead');
@@ -66,12 +62,12 @@ var TypeaheadTokenizer = React.createClass({
   _onKeyDown: function(event) {
     // We only care about intercepting backspaces
     if (event.keyCode !== KeyEvent.DOM_VK_BACK_SPACE) {
-      return true;
+      return;
     }
 
     // No tokens
     if (!this.state.selected.length) {
-      return true;
+      return;
     }
 
     // Remove token ONLY when bksp pressed at beginning of line
@@ -81,22 +77,21 @@ var TypeaheadTokenizer = React.createClass({
         entry.selectionStart == 0) {
       this._removeTokenForValue(
         this.state.selected[this.state.selected.length - 1]);
-      return false;
+      event.preventDefault();
     }
 
-    return true;
+    return;
   },
 
   _removeTokenForValue: function(value) {
     var index = this.state.selected.indexOf(value);
     if (index == -1) {
-      return false;
+      return;
     }
 
     this.state.selected.splice(index, 1);
     this.setState({selected: this.state.selected});
     this.props.onTokenRemove(this.state.selected);
-    return false;
   },
 
   _addTokenForValue: function(value) {

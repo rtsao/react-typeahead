@@ -1,8 +1,4 @@
-/**
- * @jsx React.DOM
- */
-
-var React = window.React || require('react/addons');
+var React = require('react/addons');
 
 /**
  * A single option within the TypeaheadSelector
@@ -17,7 +13,7 @@ var TypeaheadOption = React.createClass({
   getDefaultProps: function() {
     return {
       customClasses: {},
-      onClick: function() { return false; }
+      onClick: function() {}
     };
   },
 
@@ -52,6 +48,7 @@ var TypeaheadOption = React.createClass({
   },
 
   _onClick: function(e) {
+    e.preventDefault();
     return this.props.onClick();
   }
 });
