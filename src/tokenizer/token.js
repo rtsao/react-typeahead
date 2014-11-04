@@ -1,8 +1,4 @@
-/**
- * @jsx React.DOM
- */
-
-var React = window.React || require('react');
+var React = require('react');
 
 /**
  * Encapsulates the rendering of an option that has been "selected" in a
@@ -15,8 +11,8 @@ var Token = React.createClass({
   },
 
   render: function() {
-    return this.transferPropsTo(
-      <div className="typeahead-token">
+    return (
+      <div {...this.props} className="typeahead-token">
         {this.props.children}
         {this._makeCloseButton()}
       </div>

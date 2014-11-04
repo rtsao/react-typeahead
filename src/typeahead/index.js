@@ -1,8 +1,4 @@
-/**
- * @jsx React.DOM
- */
-
-var React = window.React || require('react/addons');
+var React = require('react/addons');
 var TypeaheadSelector = require('./selector');
 var KeyEvent = require('../keyevent');
 var fuzzy = require('fuzzy');
@@ -161,6 +157,8 @@ var Typeahead = React.createClass({
       return this.props.onKeyDown(event);
     }
     // Don't propagate the keystroke back to the DOM/browser
+    console.log(event);
+    event.preventDefault();
     return false;
   },
 
