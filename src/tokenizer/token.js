@@ -1,8 +1,4 @@
-/**
- * @jsx React.DOM
- */
-
-var React = window.React || require('react');
+var React = require('react');
 
 /**
  * Encapsulates the rendering of an option that has been "selected" in a
